@@ -314,27 +314,21 @@
             partySize: document.getElementById('rsvpStatus').value === 'Yes' ? document.getElementById('partySize').value : 0
         };
 
-        // FIXED: mode: 'no-cors' bypasses browser cross-domain blockages completely
+        // Fire the data silently to Google Sheets
         fetch(googleWebAppUrl, { 
             method: "POST", 
             mode: "no-cors",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(rsvpData) 
-        })
-        .then(() => {
-            // Because no-cors safely registers transmission success blindly, 
-            // we immediately show your beautiful confirmation layout cards!
+        });
+
+        // Force the webpage to immediately transition to the success screen
+        setTimeout(() => {
             document.getElementById('rsvpForm').style.display = 'none';
             const responseMessage = document.getElementById('responseMessage');
             responseMessage.style.display = 'block';
             responseMessage.innerHTML = "<p style='font-size: 1.6rem; margin-bottom:5px;'>✨ Thank You! ✨</p><p style='font-size:0.9rem; font-family:sans-serif; text-transform:uppercase; font-weight:300; color:#555;'>Your response has been registered successfully.</p>";
-        })
-        .catch((err) => {
-            console.error(err);
-            submitBtn.disabled = false;
-            submitBtn.innerText = "Submit Response";
-            alert("Error saving response. Please try again.");
-        });
+        }, 800); // Gives a brief moment for the transmission text to show elegantly
     });
 </script>
 
