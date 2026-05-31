@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dahl & Jake's Wedding Invitation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap');
+
+        body { 
+            font-family: 'Cormorant Garamond', serif; 
+            background-color: #f3f5f3; 
+            color: #2a332c; 
+            text-align: center; 
+            padding: 25px 15px; 
+            margin: 0;
+        }
+        .invitation-card { 
+            background: #ffffff; 
+            max-width: 480px; 
+            margin: 0 auto; 
+            padding: 30px 20px; 
+            border-radius: 4px; 
+            box-shadow: 0 10px 35px rgba(40, 50, 42, 0.06);
+            border: 1px solid #dfd8ca; 
+            outline: 10px solid #ffffff; 
+            position: relative;
+            box-sizing: border-box;
+        }
+        .invitation-card::after {
+            content: '';
+            position: absolute;
+            top: 12px; left: 12px; right: 12px; bottom: 12px;
+            border: 1px solid #c5a86a; 
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        .header-accent {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c5a86a; 
+            margin-bottom: 20px;
+        }
+        h1 { 
+            font-weight: 400;
+            color: #3d5041; 
+            font-size: 2.8rem; 
+            margin: 5px 0;
+            line-height: 1.1;
+        }
+        .ampersand {
+            font-style: italic;
+            font-size: 2rem;
+            color: #c5a86a;
+            margin: 3px 0;
+            display: block;
+        }
+        .photo-frame {
+            width: 100%;
+            margin: 25px auto;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid #eae6df;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.02);
+            aspect-ratio: 16 / 11; 
+            background-color: #ffffff; 
+        }
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+        }
+        .wording {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #4a544c;
+            margin: 25px 5px;
+        }
+        .details-divider {
+            width: 35px;
+            height: 1px;
+            background-color: #c5a86a;
+            margin: 15px auto;
+        }
+        .event-details {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            line-height: 1.7;
+            color: #333333;
+            margin-bottom: 30px;
+        }
+        .event-details em {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #5d6e60;
+            font-style: normal;
+            display: block;
+            margin-top: 5px;
+        }
+        form {
+            position: relative;
+            z-index: 10;
+            margin-top: 15px;
+            padding-top: 25px;
+            border-top: 1px dashed #dfd8ca;
+        }
+        .form-heading {
+            font-size: 1.5rem;
+            color: #3d5041;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        .input-wrapper { 
+            margin: 18px 0; 
+            text-align: left; 
+        }
+        label { 
+            display: block; 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px; 
+            color: #4a5d4e; 
+        }
+        input, select { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #d2ded4; 
+            background-color: #fafbfc;
+            border-radius: 3px; 
+            box-sizing: border-box; 
+            font-size: 1rem; 
+            font-family: 'Cormorant Garamond', serif;
+            color: #2a332c;
+            -webkit-appearance: none;
+        }
+        input:focus, select:focus { 
+            outline: none; 
+            border-color: #c5a86a; 
+            background-color: #ffffff;
+        }
+        button { 
+            background-color: #3d5041; 
+            color: #ffffff; 
+            border: none; 
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 15px 20px; 
+            width: 100%; 
+            border-radius: 3px; 
+            cursor: pointer; 
+            font-size: 0.8rem; 
+            font-weight: 600; 
+            margin-top: 10px; 
+            transition: background-color 0.2s ease;
+        }
+        button:hover { background-color: #2b392e; }
+        .hidden-section { display: none; }
+        .confirmation-message { margin-top: 25px; font-size: 1.3rem; color: #3d5041; }
+        #loadingText { font-size: 1.2rem; font-style: italic; color: #666; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<div class="invitation-card">
+    <div class="header-accent">Please Join Us For The Wedding Of</div>
+    
+    <h1>Dahlia Doctor</h1>
+    <span class="ampersand">&amp;</span>
+    <h1>Jacob Acosta</h1>
+
+    <div class="photo-frame">
+        <img src="your-photo.jpg" alt="Dahl &amp; Jake">
+    </div>
+
+    <div class="wording">
+        Together with their families, they invite you to join them as they exchange sacred vows and celebrate their marriage union under the evening sky.
+    </div>
+
+    <div class="details-divider"></div>
+
+    <div class="event-details">
+        <p style="font-weight: 600; color: #2a332c; margin-bottom: 3px;">SATURDAY, AUGUST 29, 2026</p>
+        <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.8rem; color: #6e7970;">CEREMONY BEGINS PROMPTLY AT 6:00 PM</p>
+        <div class="details-divider" style="width: 20px; opacity: 0.5;"></div>
+        <p style="margin-top: 12px;">
+            <em>The Acosta Residence Backyard</em>
+            <span style="display: block; font-size: 0.9rem; color: #555; margin-top: 4px;">
+                8001 Wren Rd, Oakdale, CA 95361
+            </span>
+        </p>
+    </div>
+
+    <div id="loadingText" class="hidden-section">Opening your personal invitation...</div>
+
+    <form id="rsvpForm">
+        <div class="form-heading">Response Online</div>
+        
+        <div class="input-wrapper" id="emailLookupGroup">
+            <label for="guestEmail">RSVP / Invitation Code</label>
+            <input type="text" id="guestEmail" placeholder="Enter your personalized RSVP code or full name">
+            <button type="button" id="findInviteBtn" style="margin-top: 12px; background-color: #c5a86a;">Find My Invitation</button>
+        </div>
+
+        <div id="conditionalFields" class="hidden-section">
+            <div class="input-wrapper">
+                <label id="welcomeGreeting" style="font-style: italic; text-transform: none; font-size: 1.1rem; color: #3d5041; margin-bottom: 15px; text-align: center; display: block;"></label>
+            </div>
+
+            <div class="input-wrapper">
+                <label for="rsvpStatus">Attendance Reply</label>
+                <select id="rsvpStatus" required>
+                    <option value="" disabled selected>Please select an option...</option>
+                    <option value="Yes">Joyfully Attend (In-Person)</option>
+                    <option value="Livestream">Virtually Attend (Livestream)</option>
+                    <option value="No">Regretfully Decline</option>
+                </select>
+            </div>
+
+            <div class="input-wrapper" id="seatsGroup">
+                <label for="partySize">Number of Attending Seats Requested</label>
+                <select id="partySize"></select>
+            </div>
+
+            <button type="submit" id="submitBtn">Submit Response</button>
+        </div>
+    </form>
+    
+    <div id="responseMessage" class="confirmation-message" style="display: none;"></div>
+</div>
+
+<script>
+    const googleWebAppUrl = "https://script.google.com/macros/s/AKfycbzEmvOr4Y5h1v9qyFaiB12-f4edZQL6rBsSAQy11kwPeulRkR92R78z40GbJO4e1Mzd/exec";
+    let globalActiveEmail = "";
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlEmailId = urlParams.get('id');
+        
+        if (urlEmailId) {
+            document.getElementById('emailLookupGroup').style.display = 'none';
+            document.getElementById('loadingText').classList.remove('hidden-section');
+            fetchAndInitializeGuestData(urlEmailId.trim());
+        }
+    });
+
+    document.getElementById('findInviteBtn').addEventListener('click', () => {
+        const emailInput = document.getElementById('guestEmail').value.trim();
+        if (!emailInput) { alert("Please enter your RSVP code or name."); return; }
+        document.getElementById('findInviteBtn').disabled = true;
+        document.getElementById('findInviteBtn').innerText = "Searching list...";
+        fetchAndInitializeGuestData(emailInput);
+    });
+
+    function fetchAndInitializeGuestData(targetEmail) {
+        globalActiveEmail = targetEmail;
+        fetch(googleWebAppUrl + "?action=checkEmail&email=" + encodeURIComponent(targetEmail))
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('loadingText').style.display = 'none';
+            if (data.result === "success") {
+                globalActiveEmail = data.matchedKey; 
+                
+                const maxSeats = parseInt(data.maxSeats) || 1;
+                document.getElementById('welcomeGreeting').innerText = "Welcome, " + data.firstName + "! We have reserved up to " + maxSeats + " seat(s) for your party.";
+                
+                const partySelect = document.getElementById('partySize');
+                partySelect.innerHTML = "";
+                for (let i = 1; i <= maxSeats; i++) {
+                    let opt = document.createElement('option');
+                    opt.value = i;
+                    opt.innerText = i === 1 ? "1 Seat" : i + " Seats";
+                    partySelect.appendChild(opt);
+                }
+
+                document.getElementById('conditionalFields').classList.remove('hidden-section');
+                document.getElementById('emailLookupGroup').style.display = "none";
+            } else {
+                alert(data.message || "Invitation details not found. Please double-check spelling or contact Dahl & Jake!");
+                document.getElementById('emailLookupGroup').style.display = 'block';
+                document.getElementById('findInviteBtn').disabled = false;
+                document.getElementById('findInviteBtn').innerText = "Find My Invitation";
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Timeout connecting to database. Please check your connection and try again.");
+        });
+    }
+
+    document.getElementById('rsvpStatus').addEventListener('change', function() {
+        document.getElementById('seatsGroup').style.display = (this.value === 'No' || this.value === 'Livestream') ? 'none' : 'block';
+    });
+
+    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Transmitting response...";
+        
+        const rsvpData = {
+            action: "submitRSVP",
+            email: globalActiveEmail,
+            status: document.getElementById('rsvpStatus').value,
+            partySize: document.getElementById('rsvpStatus').value === 'Yes' ? document.getElementById('partySize').value : 0
+        };
+
+        fetch(googleWebAppUrl, { method: "POST", body: JSON.stringify(rsvpData) })
+        .then(res => res.json())
+        .then(() => {
+            document.getElementById('rsvpForm').style.display = 'none';
+            const responseMessage = document.getElementById('responseMessage');
+            responseMessage.style.display = 'block';
+            responseMessage.innerHTML = "<p style='font-size: 1.6rem; margin-bottom:5px;'>\u2728 Thank You! \u2728</p><p style='font-size:0.9rem; font-family:sans-serif; text-transform:uppercase; font-weight:300; color:#555;'>Your response has been registered successfully.</p>";
+        })
+        .catch(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Submit Response";
+            alert("Error saving response. Please try again.");
+        });
+    });
+</script>
+
+</body>
+</html>
