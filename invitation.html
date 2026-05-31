@@ -174,11 +174,11 @@
         <div class="header-accent">Please Join Us For The Wedding Of</div>
         
         <h1>Dahl</h1>
-        <span class="ampersand">&</span>
+        <span class="ampersand">&amp;</span>
         <h1>Jake</h1>
 
         <div class="photo-frame">
-            <img src="image_c0faa3.jpg" alt="Dahlia & Jacob">
+            <img src="your-photo.jpg" alt="Dahlia &amp; Jacob">
         </div>
 
         <div class="wording">
@@ -201,26 +201,22 @@
             </p>
         </div>
 
-        <div id="loadingText" class="hidden-section">Verifying your invitation credentials...</div>
+        <div id="loadingText" class="hidden-section">Opening your personal invitation...</div>
 
-        <!-- Dynamic Form Framework -->
         <form id="rsvpForm">
             <div class="form-heading">Response Online</div>
             
-            <!-- Default Input Back-up Node -->
             <div class="input-wrapper" id="emailLookupGroup">
                 <label for="guestEmail">RSVP / Invitation Code</label>
                 <input type="text" id="guestEmail" placeholder="Enter your personalized RSVP code or full name">
                 <button type="button" id="findInviteBtn" style="margin-top: 12px; background-color: #c5a86a;">Find My Invitation</button>
             </div>
 
-            <!-- Conditional Display Target Section -->
             <div id="conditionalFields" class="hidden-section">
                 <div class="input-wrapper">
                     <label id="welcomeGreeting" style="font-style: italic; text-transform: none; font-size: 1.1rem; color: #3d5041; margin-bottom: 15px; text-align: center; display: block;"></label>
                 </div>
 
-                <!-- Dynamic Email Harvesting Field -->
                 <div class="input-wrapper hidden-section" id="dynamicEmailGroup">
                     <label for="providedEmail">Email Address for RSVP Confirmation</label>
                     <input type="email" id="providedEmail" placeholder="name@example.com">
@@ -245,13 +241,12 @@
             </div>
         </form>
         
-        <!-- Live Interlocking Confirmation Interface Message Slot -->
         <div id="responseMessage" class="confirmation-message" style="display: none;"></div>
     </div>
 
     <script>
-        // BACKEND NETWORK PATH CONFIGURATION
-        const googleWebAppUrl = "https://script.google.com/macros/s/AKfycbzEmvOr4Y5h1v9qyFaiB12-f4edZQL6rBsSAQy11kwPeulRkR92R78z40GbJO4e1Mzd/exec";
+        // PASTING YOUR PERSONAL DEPLOYMENT LINK HERE TARGETS YOUR SPREADSHEET ONLY
+        const googleWebAppUrl = "PASTE_YOUR_COPIED_GOOGLE_WEB_APP_URL_HERE";
         const registryLink = "https://www.zola.com/registry/your-custom-link"; 
 
         let globalActiveEmail = "";
@@ -269,7 +264,6 @@
                 }
             });
 
-            // Toggle headcount dropdown safely if "No" is clicked
             document.getElementById('rsvpStatus').addEventListener('change', function() {
                 const seatsGroup = document.getElementById('seatsGroup');
                 if (this.value === 'No' || this.value === 'Livestream') {
@@ -301,7 +295,6 @@
                     globalActiveEmail = data.email || identifier;
                     globalMaxSeatsFallback = data.maxSeats;
                     
-                    // CHECK FOR PRE-EXISTING ATTENDANCE RECORDS
                     if (data.currentStatus && data.currentStatus !== "") {
                         showAlreadyRegisteredScreen(data.name, data.currentStatus, data.currentSeats);
                         return;
@@ -356,7 +349,6 @@
             document.getElementById('conditionalFields').classList.remove('hidden-section');
             document.getElementById('welcomeGreeting').innerText = `Welcome, ${name}!`;
             
-            // EMAIL COLLECTION FIELD RESOLVER LOGIC
             if (!globalActiveEmail || !globalActiveEmail.includes('@')) {
                 guestEmailIsPlaceholder = true;
                 document.getElementById('dynamicEmailGroup').classList.remove('hidden-section');
@@ -395,7 +387,6 @@
                 partySize: document.getElementById('rsvpStatus').value === 'Yes' ? document.getElementById('partySize').value : 0
             };
 
-            // BLIND NO-CORS TRANSMISSION PROTOCOL FOR GOOGLE HANDSHAKING
             fetch(googleWebAppUrl, { 
                 method: "POST", 
                 mode: "no-cors",
@@ -403,7 +394,6 @@
                 body: JSON.stringify(rsvpData) 
             });
 
-            // INSTANT CARD SWAPOUT ROUTINE
             setTimeout(() => {
                 document.getElementById('rsvpForm').style.display = 'none';
                 const responseMessage = document.getElementById('responseMessage');
