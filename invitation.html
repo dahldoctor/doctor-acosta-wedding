@@ -288,7 +288,7 @@
             const loadingText = document.getElementById('loadingText');
             loadingText.classList.remove('hidden-section');
             
-            // FIXED: Re-wrapped using functional backtick symbols
+            // FIXED: Re-wrapped using structural backtick strings
             fetch(`${googleWebAppUrl}?id=${encodeURIComponent(identifier)}`)
             .then(res => res.json())
             .then(data => {
